@@ -1,0 +1,221 @@
+.todoPage{
+  width: 90%;
+  height: 100%;
+}
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+}
+.header-title{
+  font-weight: 700;
+  font-size: 36px;
+}
+.header--top{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconTodo{
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.icon-edit{
+  background-image: url('../../../public/editIcon.png');
+  margin-left: 24px;
+}
+.icon-back{
+  background-image: url('../../../public/backIcon.png');
+  margin-right: 20px;
+}
+.dropdown-menu{
+  position: absolute;
+  z-index: 10;
+  display: none;
+  min-width: 10rem;
+  margin: 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 0.25rem;
+}
+.dropdown-menu.show {
+  display: block;
+  width: 235px;
+  border-radius: 6px;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1rem;
+  font-weight: 400;
+  color: #212529;
+  height: 52px;
+  padding: 0;
+}
+.item-label {
+  display: flex;
+  padding: 14px 21px;
+  border-bottom: 1px solid #e5e5e5;
+  cursor: pointer;
+}
+.item-label.active{
+  cursor: default;
+}
+.item-label.active:after {
+  content: url('../../../public/checkIcon.png');
+  position: absolute;
+  left: 200px;
+  margin-top: 0;
+}
+.iconSort{
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-right: 15px;
+}
+.icon-sort-newest{
+  background-image: url('../../../public/terbaruIcon.png');
+}
+.icon-sort-oldest{
+  background-image: url('../../../public/terlamaIcon.png');
+}
+.icon-sort-az{
+  background-image: url('../../../public/azIcon.png');
+}
+.icon-sort-za{
+  background-image: url('../../../public/zaIcon.png');
+}
+.icon-sort-unfinished{
+  background-image: url('../../../public/unfinishedIcon.png');
+}
+.list-todo{
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.buttonSort{
+  border-radius: 50%;
+  border: 1px solid #e5e5e5;
+  background-color: transparent;
+  height: 54px;
+  width: 54px;
+  margin-right: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.icon-sort{
+  background-image: url('../../../public/sortIcon.png');
+  width: 18px;
+  height: 14px;
+  background-size: cover;
+}
+
+.containerNull{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.TodoNull{
+  background-image: url('../../../public/todo-empty-state.png');
+  width: 540px;
+  height: 410px;
+}
+
+.todosCard{
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 27px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
+}
+.form-check{
+  display: flex;
+  align-items: center;
+  min-height: 1.5rem;
+  padding-left: 1.5em;
+  margin-bottom: 0.125rem;
+}
+.form-check-input {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  border: 1px solid #c7c7c7;
+}
+
+.label-indicator {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  margin: 0 19px 0 7px;
+}
+.label-indicator.very-high {
+  background-color: #ed4c5c;
+}
+.label-indicator.high {
+  background-color: #F8A541;
+}
+.label-indicator.normal {
+  background-color: #00A790;
+}
+.label-indicator.low {
+  background-color: #428BC1;
+}
+.label-indicator.very-low {
+  background-color: #8942C1;
+}
+.iconTodoItem{
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+.icon-trash{
+  background-image: url('../../../public/trashIcon.png');
+}
+
+.todo-done {
+  text-decoration: line-through;
+  color: #888;
+}
+
+@media only screen and (max-width: 40em){
+  .header-title{
+    font-size: 18px;
+  }
+  .buttonSort{
+    margin-right: 2px;
+  }
+  .iconTodo{
+    width: 18px;
+    height: 18px;
+  }
+  .icon-edit, .icon-back{
+    margin: 0;
+  }
+  .dropdown-menu.show{
+    width: 170px;
+  }
+}

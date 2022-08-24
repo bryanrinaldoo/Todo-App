@@ -1,0 +1,93 @@
+.ActivityPage {
+  width: 90%;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.header-title {
+  font-weight: 700;
+  font-size: 36px;
+}
+
+.activities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.activityCard {
+  width: 235px;
+  height: 235px;
+  background: #FFFFFF;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: start;
+
+}
+
+.activityCard-title {
+  width: 80%;
+  height: 150px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #111111;
+  margin: 25px 25px 0px;
+  text-align: initial;
+  cursor: pointer;
+}
+
+.activityCard-bottom {
+  margin: 0px 0px 25px 25px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activityCard-date {
+  color: #888888;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: initial;
+}
+
+.activityCard-trashBtn {
+  background-image: url('../../../public/trashIcon.png');
+  width: 16px;
+  height: 18px;
+  background-size: cover;
+  margin-right: 11px;
+  cursor: pointer;
+}
+
+.containerNull {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ActivityNull {
+  background-image: url('../../../public/activity-empty-state.png');
+  width: 767px;
+  height: 490px;
+}
+
+/* MOBILE  */
+@media only screen and (max-width: 40em){
+  .activities{
+    justify-content: center;
+  }
+  .header-title{
+    font-size: 24px;
+  }
+}
