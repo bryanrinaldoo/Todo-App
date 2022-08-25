@@ -147,6 +147,10 @@
   border-radius: 12px;
   box-shadow: 0 4px 8px rgb(0 0 0 / 15%);
 }
+.todosCard span{
+  font-weight: 500;
+  font-size: 18px;
+}
 .form-check{
   display: flex;
   align-items: center;
@@ -200,10 +204,17 @@
   text-decoration: line-through;
   color: #888;
 }
+.MuiInputBase-input,.MuiTypography-body1{
+  font-family: 'Poppins' !important;
+}
+.header .MuiInputBase-input{
+  font-weight: 700 !important;
+  font-size: 36px !important;
+}
 
 @media only screen and (max-width: 40em){
-  .header-title{
-    font-size: 18px;
+  .header .MuiInputBase-input, .header-title{
+    font-size: 18px !important;
   }
   .buttonSort{
     margin-right: 2px;
@@ -219,3 +230,4 @@
     width: 170px;
   }
 }
+

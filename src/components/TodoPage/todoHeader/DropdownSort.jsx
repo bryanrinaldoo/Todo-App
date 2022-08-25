@@ -3,7 +3,8 @@ import { useRef } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react'
 
-const DropdownSort = () => {
+const DropdownSort = (props) => {
+  const {sortHandle} = props
   const [isDropdown, setDropdown] = useState(false);
   const [selected, setSelected] = useState(1);
   let menuRef = useRef();
@@ -51,8 +52,7 @@ const DropdownSort = () => {
   const changeSort = (id) =>{
     setSelected(id);
     setDropdown(false);
-    // TODO: bikin fungsi sorting list 
-    console.log("keganti jadi sorting: ",id);
+    sortHandle(id)
   }
   return (
     <div className="dropdown">
@@ -63,7 +63,7 @@ const DropdownSort = () => {
         <ul className="list-todo">
           {dataDropdown.map((item) => {
             return (
-              <a data-cy="sort-selection" className="dropdown-item" onClick={()=>changeSort(item.id)}>
+              <a data-cy="sort-selection" className="dropdown-item" onClick={() => changeSort(item.id)}>
                 <div className={`item-label ${selected === item.id ? 'active' : ''}`} data-cy="false">
                   <div data-cy="sort-selection-icon" className={`iconSort ${item.img}`}></div>
                   <span data-cy="sort-selection-title">{item.name}</span>

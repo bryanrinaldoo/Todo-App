@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <div className="header">
       <h1 data-cy="activity-title" className='header-title'>Activity</h1>
-      <Button data-cy="activity-add-button" buttonHandler={createActivity}/>
+      <Button data-cy="activity-add-button" buttonHandler={createActivity} label="Tambah"/>
     </div>
   )
 }

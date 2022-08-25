@@ -1,0 +1,187 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1055;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+}
+.fade {
+  transition: opacity .15s linear;
+}
+
+.modal-add-activity {
+  display: flex;
+  justify-content: center;
+}
+
+.modalContainer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  outline: 0;
+  width: 830px;
+  border-radius: 12px;
+  border: 0;
+}
+.modal-header{
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px 30px;
+}
+.modal-title{
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.icon-close{
+  background-image: url('../../../public/closeIcon.png');
+  width: 12px;
+  height: 12px;
+  background-size: cover;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.Mui-selected:after {
+  content: url('../../../public/checkIcon.png');
+  position: absolute;
+  left: 175px;
+  margin-top: 0;
+}
+
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 38px 41px 23px 30px;
+  border-top: 1px solid #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.input-title{
+  height: 52px;
+}
+.input-priority{
+  margin-top: 9px;
+  width: 205px;
+  height: 52px;
+}
+
+.modal-footer{
+  display: flex;
+  justify-content: flex-end;
+}
+.btn{
+  border: none;
+  margin: 15px 40px 19px 0px;
+  font-family: 'Poppins';
+}
+.disabled{
+  opacity: 0.2;
+  cursor: default;
+}
+
+.MuiMenuItem-root {
+  height: 52px;
+}
+
+.MuiList-padding {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.input-priority .MuiOutlinedInput-notchedOutline {
+  border: 1px solid #E5E5E5 !important
+}
+
+.input-title .Mui-focused .MuiOutlinedInput-notchedOutline{
+  border: 1px solid #16ABF8 !important;
+}
+
+.MuiFormControl-marginNormal {
+  margin-top: 9px !important;
+  margin-bottom: 26px !important;
+}
+
+.MuiSelect-root{
+  display: flex !important;
+  align-items: center !important;
+}
+
+.modalContainer-activity{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 12px;
+  width: 490px;
+  border: 0;
+  outline: 0;
+}
+
+.alertImg{
+  margin: 50px 0px;
+  display: flex;
+  justify-content: center;
+}
+.alertImg .img{
+  background-image: url('../../../public/alertIcon.png');
+  width: 63px;
+  height: 56px;
+  background-size: cover;
+}
+
+.alertText{
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  margin: 0px 63px;
+}
+
+.modalButton{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btnCancel{
+  margin: 46px 0 43px 10px;
+  background-color: #F4F4F4;
+  color: #4A4A4A;
+}
+.btnDelete{
+  margin: 46px 0 43px 10px;
+  background-color: #ED4C5C;
+}
+
+.modalInfo{
+  display: flex;
+  background-color: #fff;
+  border-radius: 12px;
+  width: 490px;
+  border: 0;
+  outline: 0;
+  height: 58px;
+  align-items: center;
+}
+
+.modalInfo .icon{
+  background-image: url('../../../public/infoIcon.png');
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+  margin: 0 13px 0 30px;
+}
+.modalInfo .text{
+  font-weight: 500;
+  font-size: 14px;
+}

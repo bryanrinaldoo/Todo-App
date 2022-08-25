@@ -1,18 +1,23 @@
 import React from 'react'
 import { useState } from 'react';
+import Axios from '../../../services/Axios'
 
 const TodoCard = (props) => {
-  const {todos} = props;
+  const {todos, openModal} = props;
   const {id, title, is_active, priority} = todos;
   const [isActive, setActive] = useState(is_active);
   
-  const deleteTodos = () =>{
-    // TODO: masukin API 
-    console.log("delete", id);
-  }
   const updateActive = () =>{
-    // TODO: masukin API 
-    setActive(!isActive);
+    Axios.patch('todo-items/' + id,{
+      "is_active": !isActive
+    })
+    .then((res) => {
+      console.log(res);
+      setActive(!isActive);
+    })
+    .catch((error) =>{
+      console.log(error);
+    })
   }
   return(
     <div data-cy="todo-item" className='todosCard'>
@@ -23,7 +28,7 @@ const TodoCard = (props) => {
         <span data-cy="todo-item-title" className={!isActive ? 'todo-done' : ''}>{title}</span>
         <div data-cy="todo-item-edit-button" className="iconTodoItem icon-edit"></div>
       </div>
-      <div data-cy="todo-item-delete-button" className="iconTodoItem icon-trash" onClick={deleteTodos}></div>  
+      <div data-cy="todo-item-delete-button" className="iconTodoItem icon-trash" onClick={event => openModal(todos)}></div>  
     </div>
   ) 
 }

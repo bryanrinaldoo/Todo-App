@@ -4,7 +4,8 @@ import Axios from '../../../services/Axios'
 import ActivityCard from './ActivityCard';
 import ActivityNull from './ActivityNull';
 
-const Activities = () => {
+const Activities = (props) => {
+  const {openFunc} = props
   const [Activities, setActivities] = useState();
 
   useEffect(() => {
@@ -25,7 +26,7 @@ console.log(Activities);
         Activities.length > 0 ?
           (<div className='activities'>
             {Activities.map(activity => (
-              <ActivityCard activity={activity}/>
+              <ActivityCard activity={activity} openModal={openFunc}/>
             ))}
           </div>)
           : <ActivityNull/>
