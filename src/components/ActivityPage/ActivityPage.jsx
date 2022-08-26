@@ -17,7 +17,6 @@ const ActivityPage = () => {
   const handleOpenAlert = (data) =>{
     setOpenAlert(!openAlert)
     setdataAct(data)
-    console.log(dataAct);
   }
   const handleOpenInfo = () =>{
     setOpenInfo(!openInfo)

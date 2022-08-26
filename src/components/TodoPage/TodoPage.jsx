@@ -26,7 +26,6 @@ const TodoPage = () => {
     }
     const handleOpenEditModal = () =>{
         setOpenEdit(!openEdit);
-        console.log("INI DATA NYA : ", dataEdit);
     }
     const handleOpenEdit = (data) =>{
         setdataEdit(data);
@@ -69,9 +68,6 @@ const TodoPage = () => {
             "title": title,
             "priority": priority
         }))
-        console.log(id);
-        console.log(title);
-        console.log(priority);
     }
     const updateActivityFunc = (title) =>{
         refresh()
@@ -79,8 +75,6 @@ const TodoPage = () => {
         dispatch(updateActivity(params.todoID, {
             "title": title,
         }))
-        console.log(params.todoID);
-        console.log(title);
     }
 
 
@@ -94,7 +88,7 @@ const TodoPage = () => {
         .catch((error) =>{
           console.log(error);
         })
-      }, [])
+    }, [])
     const refresh = () =>{
         dispatch(getTodoList(params.todoID, sorting));
     }

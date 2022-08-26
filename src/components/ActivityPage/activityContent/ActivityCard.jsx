@@ -8,11 +8,6 @@ const ActivityCard = (props) => {
     const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
     let month = months[date.getMonth()];
     let navigate = useNavigate();
-    
-    const deleteActivity = () =>{
-        // TODO: masukin API 
-        console.log("delete", id);
-    }
     return(
       <div data-cy="activity-item" className='activityCard'>
         <div data-cy="activity-item-title" className='activityCard-title' onClick={()=>{navigate(`/todo/${id}`);}}>{title}</div>

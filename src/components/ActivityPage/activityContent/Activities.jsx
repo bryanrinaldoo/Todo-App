@@ -8,8 +8,6 @@ import { connect } from 'react-redux';
 
 const  mapStateToProps = (state, props) => {
   const {openFunc} = props
-  console.log("map");
-  console.log(state);
   return{
     getActivitiesList: state.activities.getActivitiesList,
     openFunc
