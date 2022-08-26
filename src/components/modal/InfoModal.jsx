@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal } from '@material-ui/core';
 
 const InfoModal = (props) => {
-  const {open, handle} = props;
+  const {open, handle, label} = props;
   return (
     <div>
       <Modal
@@ -12,7 +12,7 @@ const InfoModal = (props) => {
       >
         <div className="modalInfo" data-cy="modal-information">
           <div data-cy="modal-information-icon" className="icon"></div>
-          <div data-cy="modal-information-title" className="text">Activity berhasil dihapus</div>
+          <div data-cy="modal-information-title" className="text">{label} berhasil dihapus</div>
         </div>
       </Modal>
     </div>

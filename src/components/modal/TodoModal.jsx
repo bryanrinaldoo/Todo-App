@@ -63,7 +63,7 @@ const TodoModal = (props) => {
         onClose={handle}
         style={{display:'flex',alignItems:'center',justifyContent:'center'}}
       >
-        <div className="modalContainer">
+        <div className="modalContainer" data-cy="modal-add">
           <div className="modal-header">
             <h4 className="modal-title" data-cy="modal-add-title">Tambah List Item</h4>
             <div className="icon-close" data-cy="modal-add-close-button" onClick={handle}></div>
@@ -76,6 +76,7 @@ const TodoModal = (props) => {
             </FormControl>
             <label data-cy="modal-add-priority-title">PRIORITY</label><br/>
             <Select
+              data-cy="modal-add-priority-dropdown"
               variant="outlined"
               className='input-priority'
               id="demo-simple-select"
@@ -94,7 +95,7 @@ const TodoModal = (props) => {
               }}
             >
               {currencies.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
+              <MenuItem key={option.value} value={option.value} data-cy="modal-add-priority-item">
                 <ListItemIcon><div className={`label-indicator ${option.value}`}></div></ListItemIcon>
                 <ListItemText>{option.label}</ListItemText>
               </MenuItem>

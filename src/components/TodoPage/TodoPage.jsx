@@ -9,6 +9,7 @@ import AlertModal from '../modal/AlertModal';
 import Axios from '../../services/Axios'
 import {connect, useDispatch} from 'react-redux'
 import { getTodoList, deleteTodo, createTodo, updateTodo, updateActivity } from '../../actions/activityAction'
+import InfoModal from '../modal/InfoModal';
 
 const TodoPage = () => {
     let params = useParams();
@@ -19,8 +20,12 @@ const TodoPage = () => {
     const [dataEdit, setdataEdit] = useState();
     const [sorting, setSorting] = useState(1);
     const [titleAct, setTitleAct] = useState();
+    const [openInfo, setOpenInfo] = useState(false);
     const dispatch = useDispatch();
 
+    const handleOpenInfo = () =>{
+        setOpenInfo(!openInfo)
+    }
     const handleOpenTodo = () =>{
         setOpenTodo(!openTodo);
     }
@@ -45,6 +50,7 @@ const TodoPage = () => {
         // TODO: bikin biar ga refresh
         dispatch(deleteTodo(dataTodo.id))
         setOpenAlert(!openAlert)
+        setOpenInfo(!openInfo)
         refresh()
         refresh()
     }
@@ -102,6 +108,7 @@ const TodoPage = () => {
             <TodoModal open={openEdit} handle={handleOpenEditModal} handleCreate ={createEditFunc} updateData={dataEdit}/>
             <TodoModal open={openTodo} handle={handleOpenTodo} handleCreate ={createTodoFunc}/>
             <AlertModal open={openAlert} handle={handleOpenAlert} type="List Item" title={dataTodo ? dataTodo.title : ''} alertHandle={deleteTodoFunc}/>
+            <InfoModal open={openInfo} handle={handleOpenInfo} label="List Item"/>
         </Container>
     )
 }

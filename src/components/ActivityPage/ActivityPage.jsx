@@ -46,7 +46,7 @@ const ActivityPage = () => {
       <Header handleCreate={createActFunc}/>
       <Activities openFunc={handleOpenAlert}/>
       <AlertModal open={openAlert} handle={handleOpenAlert} type="activity" title={dataAct ? dataAct.title : ''} alertHandle={deleteActivityFunc}/>
-      <InfoModal open={openInfo} handle={handleOpenInfo}/>
+      <InfoModal open={openInfo} handle={handleOpenInfo} label="Activity"/>
     </Container>
   )
 }
