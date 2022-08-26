@@ -36,7 +36,8 @@
 }
 .dropdown-menu{
   position: absolute;
-  z-index: 10;
+  z-index: 100;
+  top: 28%;
   display: none;
   min-width: 10rem;
   margin: 0;
