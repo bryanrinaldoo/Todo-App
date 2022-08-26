@@ -6,11 +6,7 @@ import { useState } from 'react'
 
 const TodoModal = (props) => {
   const {open,handle, handleCreate, updateData} = props;
-  const [values, setValues] = useState(
-    updateData ? {
-      title: "hai",
-      priority: 'normal',
-    } : {
+  const [values, setValues] = useState({
     title: '',
     priority: 'very-high',
   });
@@ -28,6 +24,14 @@ const TodoModal = (props) => {
       displayData()
     }
   },[updateData])
+
+  const createNew = (title, priority) =>{
+    handleCreate(title,priority);
+    setValues({
+      title: '',
+      priority: 'very-high'
+    })
+  }
   
   const currencies = [
     {
@@ -68,9 +72,6 @@ const TodoModal = (props) => {
           <div className="modal-body">
             <label data-cy="modal-add-name-title" onClick={displayData}>NAMA LIST ITEM</label>
             <FormControl fullWidth data-cy="modal-add-name-input">
-              {/* {
-                updateData ? displayData() : ''
-              } */}
               <TextField variant="outlined" placeholder='Tambahkan nama list item' className="input-title" value={values.title} onChange={handleChange('title')} />
             </FormControl>
             <label data-cy="modal-add-priority-title">PRIORITY</label><br/>
@@ -102,7 +103,7 @@ const TodoModal = (props) => {
           </div>
 
           <div className="modal-footer">
-            <button className={`btn ${ !values.title ? 'disabled' : ''}`} disabled={!values.title} id="AddFormSubmit" data-cy="modal-add-save-button" onClick={event => updateData ? handleCreate(updateData.id, values.title, values.priority) : handleCreate(values.title,values.priority)}>Simpan</button>
+            <button className={`btn ${ !values.title ? 'disabled' : ''}`} disabled={!values.title} id="AddFormSubmit" data-cy="modal-add-save-button" onClick={event => updateData ? handleCreate(updateData.id, values.title, values.priority) : createNew(values.title, values.priority)}>Simpan</button>
           </div>
         </div>
       </Modal>

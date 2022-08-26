@@ -1,6 +1,5 @@
-import React , {useEffect, useState} from 'react'
+import React from 'react'
 import { CircularProgress } from '@material-ui/core';
-import Axios from '../../../services/Axios'
 import ActivityCard from './ActivityCard';
 import ActivityNull from './ActivityNull';
 import { connect } from 'react-redux';
