@@ -34,14 +34,14 @@ const Header = (props) => {
       <div className="header--top">
         <div data-cy="todo-back-button" className="iconTodo icon-back" onClick={()=>{navigate(`/`);}}></div>
         {
-          edit ? <TextField ref={menuRef} variant="standard" value={title} onChange={event => updateFunc(event.target.value)} /> : <h1 ref={menuRef} data-cy="todo-title" className='header-title'>{title}</h1> 
+          edit ? <TextField data-cy="todo-title" ref={menuRef} variant="standard" value={title} onChange={event => updateFunc(event.target.value)} /> : <h1 ref={menuRef} data-cy="todo-title" className='header-title' onClick={updateTodo}>{title}</h1> 
         }
-        <div data-cy="todo-edit-button" className="iconTodo icon-edit" onClick={updateTodo}></div>
+        <div data-cy="todo-edit-button" className="iconTodo icon-edit"></div>
       </div>
 
       <div className="header--top">
         <DropdownSort sortHandle={sortFunc}/>
-        <Button data-cy="todo-add-button" buttonHandler={openModal} label="Tambah"/>
+        <Button datacy="todo-add-button" buttonHandler={openModal} label="Tambah"/>
       </div>
 
     </div>

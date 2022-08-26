@@ -10,7 +10,7 @@ const AlertModal = (props) => {
         onClose={handle}
         style={{display:'flex',alignItems:'center',justifyContent:'center'}}
       >
-        <div className="modalContainer-activity">
+        <div className="modalContainer-activity" data-cy="modal-delete">
           <div className="modalContent">
             <div className="alertImg">
               <div data-cy="modal-delete-icon" className="img"></div>

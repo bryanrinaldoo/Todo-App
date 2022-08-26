@@ -10,7 +10,7 @@ const InfoModal = (props) => {
         onClose={handle}
         style={{display:'flex',alignItems:'center',justifyContent:'center'}}
       >
-        <div className="modalInfo">
+        <div className="modalInfo" data-cy="modal-information">
           <div data-cy="modal-information-icon" className="icon"></div>
           <div data-cy="modal-information-title" className="text">Activity berhasil dihapus</div>
         </div>

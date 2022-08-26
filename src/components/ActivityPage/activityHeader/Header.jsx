@@ -6,7 +6,7 @@ const Header = (props) => {
   return (
     <div className="header">
       <h1 data-cy="activity-title" className='header-title'>Activity</h1>
-      <Button data-cy="activity-add-button" buttonHandler={handleCreate} label="Tambah"/>
+      <Button datacy="activity-add-button" buttonHandler={handleCreate} label="Tambah"/>
     </div>
   )
 }
