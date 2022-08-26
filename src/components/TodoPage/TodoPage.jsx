@@ -13,14 +13,24 @@ import { getTodoList, deleteTodo, createTodo } from '../../actions/activityActio
 const TodoPage = () => {
     let params = useParams();
     const [openTodo, setOpenTodo] = useState(false);
+    const [openEdit, setOpenEdit] = useState(false);
     const [openAlert, setOpenAlert] = useState(false);
     const [dataTodo, setdataTodo] = useState();
+    const [dataEdit, setdataEdit] = useState();
     const [sorting, setSorting] = useState(1);
     const [titleAct, setTitleAct] = useState();
     const dispatch = useDispatch();
 
     const handleOpenTodo = () =>{
-        setOpenTodo(!openTodo)
+        setOpenTodo(!openTodo);
+    }
+    const handleOpenEditModal = () =>{
+        setOpenEdit(!openEdit);
+        console.log("INI DATA NYA : ", dataEdit);
+    }
+    const handleOpenEdit = (data) =>{
+        setdataEdit(data);
+        handleOpenEditModal()
     }
     const handleOpenAlert = (data) =>{
         setOpenAlert(!openAlert)
@@ -47,6 +57,10 @@ const TodoPage = () => {
             "priority": priority
         }))
     }
+    const createEditFunc = (title, priority) =>{
+        console.log(title);
+        console.log(priority);
+    }
     const handleUpdate = (title) =>{
         setTitleAct(title)
     }
@@ -71,7 +85,8 @@ const TodoPage = () => {
     return (
         <Container maxWidth="md"> 
             <Header openModal={handleOpenTodo} sortFunc={handleSort} title={titleAct} updateFunc={handleUpdate}/>
-            <Todos openFunc={handleOpenAlert} updateFunc={refresh}/>
+            <Todos openFunc={handleOpenAlert} updateFunc={refresh} editFunc={handleOpenEdit}/>
+            <TodoModal open={openEdit} handle={handleOpenEditModal} handleCreate ={createEditFunc} updateData={dataEdit}/>
             <TodoModal open={openTodo} handle={handleOpenTodo} handleCreate ={createTodoFunc}/>
             <AlertModal open={openAlert} handle={handleOpenAlert} type="List Item" title={dataTodo ? dataTodo.title : ''} alertHandle={deleteTodoFunc}/>
         </Container>

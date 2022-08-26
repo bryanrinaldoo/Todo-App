@@ -1,18 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Modal from '@material-ui/core/Modal'
 import './Modal.css'
 import { TextField, MenuItem, FormControl, Select, ListItemIcon, ListItemText} from '@material-ui/core'
 import { useState } from 'react'
 
 const TodoModal = (props) => {
-  const {open,handle, handleCreate} = props;
-  const [values, setValues] = useState({
+  const {open,handle, handleCreate, updateData} = props;
+  console.log(updateData);
+  const [values, setValues] = useState(
+    updateData ? {
+      title: "hai",
+      priority: 'normal',
+    } : {
     title: '',
     priority: 'very-high',
   });
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
+  const displayData = () =>{
+    setValues({
+      title: updateData.title,
+      priority: updateData.priority
+    })
+  }
+  useEffect(() => {
+    if(updateData){
+      displayData()
+    }
+  },[updateData])
+  
   const currencies = [
     {
       value: 'very-high',
@@ -50,8 +67,11 @@ const TodoModal = (props) => {
           </div>
 
           <div className="modal-body">
-            <label data-cy="modal-add-name-title">NAMA LIST ITEM</label>
+            <label data-cy="modal-add-name-title" onClick={displayData}>NAMA LIST ITEM</label>
             <FormControl fullWidth data-cy="modal-add-name-input">
+              {/* {
+                updateData ? displayData() : ''
+              } */}
               <TextField variant="outlined" placeholder='Tambahkan nama list item' className="input-title" value={values.title} onChange={handleChange('title')} />
             </FormControl>
             <label data-cy="modal-add-priority-title">PRIORITY</label><br/>

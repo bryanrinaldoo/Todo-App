@@ -6,11 +6,12 @@ import TodoCard from './TodoCard';
 import { connect } from 'react-redux';
 
 const  mapStateToProps = (state, props) => {
-  const {openFunc, updateFunc} = props
+  const {openFunc, updateFunc, editFunc} = props
   return{
     getTodoList: state.activities.getTodoList,
     openFunc,
-    updateFunc
+    updateFunc,
+    editFunc
   }
 }
 
@@ -22,7 +23,7 @@ const Todos = (props) => {
         props.getTodoList.length > 0 ?
           (<div className='todos'>
             {props.getTodoList.map(todos => (
-              <TodoCard todos={todos} openModal={props.openFunc} update={props.updateFunc}/>
+              <TodoCard todos={todos} openModal={props.openFunc} update={props.updateFunc} openEdit={props.editFunc}/>
             ))}
           </div>)
           : <TodoNull/>
