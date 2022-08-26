@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { TextField } from '@material-ui/core'
 
 const Header = (props) => {
-  const {openModal, sortFunc, title, updateFunc} = props
+  const {openModal, sortFunc, title, updateFunc, editFunc} = props
   const [edit, setEdit] = useState(false)
   let navigate = useNavigate();
   const updateTodo = () =>{
@@ -18,6 +18,9 @@ const Header = (props) => {
     let toggleHandler = (event) =>{
       if(!menuRef.current.contains(event.target)){
         setEdit(false)
+        if(menuRef.current.firstElementChild){
+          editFunc(menuRef.current.firstElementChild.firstElementChild.value)
+        }
       }
     }
     document.addEventListener('mousedown', toggleHandler)

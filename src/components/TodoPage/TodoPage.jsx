@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import AlertModal from '../modal/AlertModal';
 import Axios from '../../services/Axios'
 import {connect, useDispatch} from 'react-redux'
-import { getTodoList, deleteTodo, createTodo } from '../../actions/activityAction'
+import { getTodoList, deleteTodo, createTodo, updateTodo, updateActivity } from '../../actions/activityAction'
 
 const TodoPage = () => {
     let params = useParams();
@@ -39,31 +39,50 @@ const TodoPage = () => {
     const handleSort = (idSort) =>{
         setSorting(idSort)
     }
+    const handleUpdate = (title) =>{
+        setTitleAct(title)
+    }
     const deleteTodoFunc = () =>{
         // TODO: bikin biar ga refresh
-        refresh()
-        refresh()
         dispatch(deleteTodo(dataTodo.id))
         setOpenAlert(!openAlert)
+        refresh()
+        refresh()
     }
     const createTodoFunc = (title, priority) =>{
         // TODO: bikin biar ga refresh
-        refresh()
-        refresh()
         handleOpenTodo()
         dispatch(createTodo({
             "activity_group_id": params.todoID,
             "title": title,
             "priority": priority
         }))
+        refresh()
+        refresh()
     }
-    const createEditFunc = (title, priority) =>{
+    const createEditFunc = (id, title, priority) =>{
+        // TODO: bikin biar ga refresh
+        refresh()
+        refresh()
+        handleOpenEditModal()
+        dispatch(updateTodo(id, {
+            "title": title,
+            "priority": priority
+        }))
+        console.log(id);
         console.log(title);
         console.log(priority);
     }
-    const handleUpdate = (title) =>{
-        setTitleAct(title)
+    const updateActivityFunc = (title) =>{
+        refresh()
+        refresh()
+        dispatch(updateActivity(params.todoID, {
+            "title": title,
+        }))
+        console.log(params.todoID);
+        console.log(title);
     }
+
 
     //get activity title
     useEffect(() => {
@@ -84,7 +103,7 @@ const TodoPage = () => {
     },[sorting])
     return (
         <Container maxWidth="md"> 
-            <Header openModal={handleOpenTodo} sortFunc={handleSort} title={titleAct} updateFunc={handleUpdate}/>
+            <Header openModal={handleOpenTodo} sortFunc={handleSort} title={titleAct} updateFunc={handleUpdate} editFunc={updateActivityFunc}/>
             <Todos openFunc={handleOpenAlert} updateFunc={refresh} editFunc={handleOpenEdit}/>
             <TodoModal open={openEdit} handle={handleOpenEditModal} handleCreate ={createEditFunc} updateData={dataEdit}/>
             <TodoModal open={openTodo} handle={handleOpenTodo} handleCreate ={createTodoFunc}/>

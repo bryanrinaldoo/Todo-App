@@ -1,7 +1,8 @@
-import {DELETE_ACTIVITY, DELETE_TODO, GET_ACTIVITY_LIST, GET_TODO_LIST, PATCH_TODO, POST_ACTIVITY, POST_TODO} from '../actions/activityAction'
+import {DELETE_ACTIVITY, DELETE_TODO, GET_ACTIVITY_LIST, GET_TODO_LIST, PATCH_ACTIVITY, PATCH_TODO, POST_ACTIVITY, POST_TODO} from '../actions/activityAction'
 
 let initialState ={
   getActivitiesList: false,
+  getResUpdateActivity: false,
   getResCreateActivity: false,
   getResDeleteActivity: false,
   getTodoList: false,
@@ -17,6 +18,11 @@ const activities = (state = initialState, action) =>{
       return {
         ...state,
         getActivitiesList: action.payload.data
+      };
+    case PATCH_ACTIVITY:
+      return {
+        ...state,
+        getResUpdateActivity: action.payload.data
       };
     case POST_ACTIVITY :
       return {

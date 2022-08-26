@@ -1,6 +1,7 @@
 import Axios from '../services/Axios' 
 
 export const GET_ACTIVITY_LIST = "GET_ACTIVITY_LIST";
+export const PATCH_ACTIVITY = "PATCH_ACTIVITY";
 export const POST_ACTIVITY = "POST_ACTIVITY"
 export const DELETE_ACTIVITY = "DELETE_ACTIVITY"
 export const GET_TODO_LIST = "GET_TODO_LIST";
@@ -20,6 +21,23 @@ export const getActivitiesList = () => {
           data: dataActivities
         },
       });
+    })
+    .catch((error) =>{
+      console.log(error);
+    })
+  }
+}
+export const updateActivity = (id, data) => {
+  return (dispatch) => {
+    Axios.patch('activity-groups/' + id,data)
+    .then((res) => {
+      dispatch({
+        type: PATCH_ACTIVITY,
+        payload: {
+          data: res
+        },
+      });
+      console.log(res);
     })
     .catch((error) =>{
       console.log(error);

@@ -6,7 +6,6 @@ import { useState } from 'react'
 
 const TodoModal = (props) => {
   const {open,handle, handleCreate, updateData} = props;
-  console.log(updateData);
   const [values, setValues] = useState(
     updateData ? {
       title: "hai",
@@ -103,7 +102,7 @@ const TodoModal = (props) => {
           </div>
 
           <div className="modal-footer">
-            <button className={`btn ${ !values.title ? 'disabled' : ''}`} disabled={!values.title} id="AddFormSubmit" data-cy="modal-add-save-button" onClick={event => handleCreate(values.title,values.priority)}>Simpan</button>
+            <button className={`btn ${ !values.title ? 'disabled' : ''}`} disabled={!values.title} id="AddFormSubmit" data-cy="modal-add-save-button" onClick={event => updateData ? handleCreate(updateData.id, values.title, values.priority) : handleCreate(values.title,values.priority)}>Simpan</button>
           </div>
         </div>
       </Modal>
