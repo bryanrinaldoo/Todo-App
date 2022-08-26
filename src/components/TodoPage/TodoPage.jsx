@@ -7,6 +7,8 @@ import TodoModal from '../modal/TodoModal';
 import { useState, useEffect } from 'react';
 import AlertModal from '../modal/AlertModal';
 import Axios from '../../services/Axios'
+import {connect, useDispatch} from 'react-redux'
+import { getTodoList, deleteTodo, createTodo } from '../../actions/activityAction'
 
 const TodoPage = () => {
     let params = useParams();
@@ -15,6 +17,8 @@ const TodoPage = () => {
     const [dataTodo, setdataTodo] = useState();
     const [sorting, setSorting] = useState(1);
     const [titleAct, setTitleAct] = useState();
+    const dispatch = useDispatch();
+
     const handleOpenTodo = () =>{
         setOpenTodo(!openTodo)
     }
@@ -25,10 +29,23 @@ const TodoPage = () => {
     const handleSort = (idSort) =>{
         setSorting(idSort)
     }
-    const deleteTodo = () =>{
-        // TODO: manggil API 
+    const deleteTodoFunc = () =>{
+        // TODO: bikin biar ga refresh
+        refresh()
+        refresh()
+        dispatch(deleteTodo(dataTodo.id))
         setOpenAlert(!openAlert)
-        console.log(dataTodo);
+    }
+    const createTodoFunc = (title, priority) =>{
+        // TODO: bikin biar ga refresh
+        refresh()
+        refresh()
+        handleOpenTodo()
+        dispatch(createTodo({
+            "activity_group_id": params.todoID,
+            "title": title,
+            "priority": priority
+        }))
     }
     const handleUpdate = (title) =>{
         setTitleAct(title)
@@ -45,14 +62,20 @@ const TodoPage = () => {
           console.log(error);
         })
       }, [])
+    const refresh = () =>{
+        dispatch(getTodoList(params.todoID, sorting));
+    }
+    useEffect(() => {
+        refresh();
+    },[sorting])
     return (
         <Container maxWidth="md"> 
             <Header openModal={handleOpenTodo} sortFunc={handleSort} title={titleAct} updateFunc={handleUpdate}/>
-            <Todos todoID={params.todoID} openFunc={handleOpenAlert} sortOpt={sorting}/>
-            <TodoModal open={openTodo} handle={handleOpenTodo}/>
-            <AlertModal open={openAlert} handle={handleOpenAlert} type="List Item" title={dataTodo ? dataTodo.title : ''} alertHandle={deleteTodo}/>
+            <Todos openFunc={handleOpenAlert} updateFunc={refresh}/>
+            <TodoModal open={openTodo} handle={handleOpenTodo} handleCreate ={createTodoFunc}/>
+            <AlertModal open={openAlert} handle={handleOpenAlert} type="List Item" title={dataTodo ? dataTodo.title : ''} alertHandle={deleteTodoFunc}/>
         </Container>
     )
 }
 
-export default TodoPage
+export default connect()(TodoPage);

@@ -3,30 +3,27 @@ import { CircularProgress } from '@material-ui/core';
 import Axios from '../../../services/Axios'
 import ActivityCard from './ActivityCard';
 import ActivityNull from './ActivityNull';
+import { connect } from 'react-redux';
+
+
+const  mapStateToProps = (state, props) => {
+  const {openFunc} = props
+  console.log("map");
+  console.log(state);
+  return{
+    getActivitiesList: state.activities.getActivitiesList,
+    openFunc
+  }
+}
 
 const Activities = (props) => {
-  const {openFunc} = props
-  const [Activities, setActivities] = useState();
-
-  useEffect(() => {
-    Axios.get('activity-groups?email=bryanrinaldo')
-    .then((res) => {
-      const dataActivities = res.data.data;
-      setActivities(dataActivities)
-    })
-    .catch((error) =>{
-      console.log(error);
-    })
-  }, [])
-
-console.log(Activities);
   return (
     <>
-      {Activities ? (
-        Activities.length > 0 ?
+      {props.getActivitiesList ? (
+        props.getActivitiesList.length > 0 ?
           (<div className='activities'>
-            {Activities.map(activity => (
-              <ActivityCard activity={activity} openModal={openFunc}/>
+            {props.getActivitiesList.map(activity => (
+              <ActivityCard activity={activity} openModal={props.openFunc}/>
             ))}
           </div>)
           : <ActivityNull/>
@@ -36,4 +33,4 @@ console.log(Activities);
   )
 }
 
-export default Activities
+export default connect(mapStateToProps, null)(Activities);

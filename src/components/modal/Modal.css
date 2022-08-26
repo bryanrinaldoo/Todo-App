@@ -68,6 +68,7 @@
 
 .input-title{
   height: 52px;
+  margin: 9px 0 26px 0 !important;
 }
 .input-priority{
   margin-top: 9px;
@@ -78,6 +79,7 @@
 .modal-footer{
   display: flex;
   justify-content: flex-end;
+  margin-right: 40px;
 }
 .btn{
   border: none;

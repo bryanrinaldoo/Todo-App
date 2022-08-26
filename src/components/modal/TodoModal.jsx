@@ -5,7 +5,7 @@ import { TextField, MenuItem, FormControl, Select, ListItemIcon, ListItemText} f
 import { useState } from 'react'
 
 const TodoModal = (props) => {
-  const {open,handle} = props;
+  const {open,handle, handleCreate} = props;
   const [values, setValues] = useState({
     title: '',
     priority: 'very-high',
@@ -13,11 +13,6 @@ const TodoModal = (props) => {
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
-  const submitUpdate = () =>{
-    // TODO: update API todo 
-    console.log("ini title: ",values.title);
-    console.log("ini priority: ",values.priority);
-  }
   const currencies = [
     {
       value: 'very-high',
@@ -49,15 +44,15 @@ const TodoModal = (props) => {
         style={{display:'flex',alignItems:'center',justifyContent:'center'}}
       >
         <div className="modalContainer">
-          <div class="modal-header">
-            <h4 class="modal-title" data-cy="modal-add-title">Tambah List Item</h4>
-            <div class="icon-close" data-cy="modal-add-close-button" onClick={handle}></div>
+          <div className="modal-header">
+            <h4 className="modal-title" data-cy="modal-add-title">Tambah List Item</h4>
+            <div className="icon-close" data-cy="modal-add-close-button" onClick={handle}></div>
           </div>
 
-          <div class="modal-body">
+          <div className="modal-body">
             <label data-cy="modal-add-name-title">NAMA LIST ITEM</label>
             <FormControl fullWidth data-cy="modal-add-name-input">
-              <TextField variant="outlined" placeholder='Tambahkan nama list item' className="input-title" value={values.title} onChange={handleChange('title')} margin="normal"/>
+              <TextField variant="outlined" placeholder='Tambahkan nama list item' className="input-title" value={values.title} onChange={handleChange('title')} />
             </FormControl>
             <label data-cy="modal-add-priority-title">PRIORITY</label><br/>
             <Select
@@ -66,7 +61,6 @@ const TodoModal = (props) => {
               id="demo-simple-select"
               value={values.priority}
               onChange={handleChange('priority')}
-              margin="normal"
               MenuProps={{
                 anchorOrigin: {
                   vertical: "bottom",
@@ -88,8 +82,8 @@ const TodoModal = (props) => {
             </Select>
           </div>
 
-          <div class="modal-footer">
-            <button class={`btn ${ !values.title ? 'disabled' : ''}`} disabled={!values.title} id="AddFormSubmit" data-cy="modal-add-save-button" onClick={submitUpdate}>Simpan</button>
+          <div className="modal-footer">
+            <button className={`btn ${ !values.title ? 'disabled' : ''}`} disabled={!values.title} id="AddFormSubmit" data-cy="modal-add-save-button" onClick={event => handleCreate(values.title,values.priority)}>Simpan</button>
           </div>
         </div>
       </Modal>
