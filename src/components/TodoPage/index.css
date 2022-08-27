@@ -35,9 +35,6 @@
   background-image: url('../../../public/backIcon.png');
   margin-right: 20px;
 }
-.dropdown{
-  z-index: 1301;
-}
 .dropdown-menu{
   position: absolute;
   z-index: 100;
@@ -236,9 +233,6 @@
   .icon-edit, .icon-back{
     margin: 0;
   }
-  /* .dropdown-menu{
-    top: 3%;
-  } */
   .dropdown-menu.show{
     width: 120px;
   }
@@ -281,6 +275,11 @@
   .form-check-input {
     width: 18px;
     height: 18px;
+  }
+  .TodoNull{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
 
