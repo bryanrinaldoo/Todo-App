@@ -2,17 +2,17 @@
   width: 90%;
   height: 100%;
 }
-.header{
+.header-todo{
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 10px;
 }
-.header-title{
+.header-todo-title{
   font-weight: 700;
   font-size: 36px;
 }
-.header--top{
+.header-todo--top{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -40,7 +40,7 @@
   z-index: 100;
   top: 28%;
   display: none;
-  min-width: 10rem;
+  min-width: 9rem;
   margin: 0;
   font-size: 1rem;
   color: #212529;
@@ -141,6 +141,7 @@
 
 .todosCard{
   display: flex;
+  align-items: center;
   justify-content: space-between;
   background-color: #fff;
   margin-bottom: 10px;
@@ -151,6 +152,7 @@
 .todosCard span{
   font-weight: 500;
   font-size: 18px;
+  margin-right: 5px;
 }
 .form-check{
   display: flex;
@@ -208,13 +210,17 @@
 .MuiInputBase-input,.MuiTypography-body1{
   font-family: 'Poppins' !important;
 }
-.header .MuiInputBase-input{
+.header-todo .MuiInputBase-input{
   font-weight: 700 !important;
   font-size: 36px !important;
 }
 
 @media only screen and (max-width: 40em){
-  .header .MuiInputBase-input, .header-title{
+  .header-todo{
+    margin: 10px 0 0 0 ;
+    flex-direction: column;
+  }
+  .header-todo .MuiInputBase-input, .header-todo-title{
     font-size: 18px !important;
   }
   .buttonSort{
@@ -227,8 +233,51 @@
   .icon-edit, .icon-back{
     margin: 0;
   }
+  /* .dropdown-menu{
+    top: 3%;
+  } */
   .dropdown-menu.show{
-    width: 170px;
+    width: 120px;
+  }
+  .btn{
+    height: 33px;
+  }
+  .buttonSort{
+    width: 35px;
+    height: 35px;
+  }
+  .header-todo--top{
+    gap: 5px;
+  }
+  .header-todo--top.right{
+    align-self: flex-end;
+  }
+  .header-todo--top.left{
+    align-self: flex-start;
+  }
+  .item-label {
+    padding: 8px 10px;
+  }
+  .dropdown-item {
+    height: auto;
+  }
+  .item-label span{
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .item-label.active:after {
+    left: 120px;
+  }
+  .todosCard {
+    padding: 18px;
+  }
+  .todosCard span{
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .form-check-input {
+    width: 18px;
+    height: 18px;
   }
 }
 

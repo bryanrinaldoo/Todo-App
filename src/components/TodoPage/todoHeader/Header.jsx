@@ -29,17 +29,17 @@ const Header = (props) => {
     }
   })
   return (
-    <div className="header">
+    <div className="header-todo">
 
-      <div className="header--top">
+      <div className="header-todo--top left">
         <div data-cy="todo-back-button" className="iconTodo icon-back" onClick={()=>{navigate(`/`);}}></div>
         {
-          edit ? <TextField data-cy="todo-title" ref={menuRef} variant="standard" value={title} onChange={event => updateFunc(event.target.value)} /> : <h1 ref={menuRef} data-cy="todo-title" className='header-title' onClick={updateTodo}>{title}</h1> 
+          edit ? <TextField data-cy="todo-title" ref={menuRef} variant="standard" value={title} onChange={event => updateFunc(event.target.value)} /> : <h1 ref={menuRef} data-cy="todo-title" className='header-todo-title' onClick={updateTodo}>{title}</h1> 
         }
         <div data-cy="todo-edit-button" className="iconTodo icon-edit"></div>
       </div>
 
-      <div className="header--top">
+      <div className="header-todo--top right">
         <DropdownSort sortHandle={sortFunc}/>
         <Button datacy="todo-add-button" buttonHandler={openModal} label="Tambah"/>
       </div>
