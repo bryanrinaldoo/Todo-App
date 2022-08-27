@@ -104,7 +104,7 @@ const TodoModal = (props) => {
           </div>
 
           <div className="modal-footer">
-            <button className={`btn ${ !values.title ? 'disabled' : ''}`} id="AddFormSubmit" data-cy="modal-add-save-button" onClick={event => {
+            <button className={`btn ${ !values.title ? 'disabled' : ''}`} disabled={!values.title} id="AddFormSubmit" data-cy="modal-add-save-button" onClick={event => {
               !values.title ? handle() :
               updateData ? handleCreate(updateData.id, values.title, values.priority) : createNew(values.title, values.priority)}}>Simpan</button>
           </div>
