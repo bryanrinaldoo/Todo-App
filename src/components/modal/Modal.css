@@ -39,6 +39,7 @@
 .modal-title{
   font-weight: 600;
   font-size: 18px;
+  margin: 18px 0;
 }
 
 .icon-close{
@@ -59,7 +60,7 @@
 .modal-body {
   position: relative;
   flex: 1 1 auto;
-  padding: 38px 41px 23px 30px;
+  padding: 24px 41px 24px 30px;
   border-top: 1px solid #E5E5E5;
   border-bottom: 1px solid #E5E5E5;
   font-weight: 600;
